@@ -1,0 +1,35 @@
+int nearestPowerOf2(int n) {
+    // Edge case for n = 1
+    if (n == 1) return 0;
+    int lowerPower = pow(2, std::floor(std::log2(n)));
+    int higherPower = pow(2, std::ceil(std::log2(n)));
+
+    // Check which one is closer that may either greater or less
+    if (n - lowerPower < higherPower - n) {
+        return log2(lowerPower);
+    } else {
+        return log2(higherPower);
+    }
+}
+
+// for the number less 
+int nearestLowerPowerOf2(int n) {
+    // Handle the edge case where n is 1 or less
+    if (n <= 1) return 0;
+
+    // Find the highest power of 2 less than n
+    int lowerPower = (int)std::floor(std::log2(n - 1));
+    
+    return lowerPower;
+}
+
+// for the number greater nearest 2 power 
+int nearestHigherPowerOf2(int n) {
+    // Handle the edge case where n is 0 or less
+    if (n <= 0) return 0;
+
+    // Find the smallest power of 2 greater than n
+    int higherPower = (int)std::ceil(std::log2(n));
+    
+    return higherPower;
+}
